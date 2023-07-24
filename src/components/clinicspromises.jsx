@@ -5,8 +5,8 @@ import { LiaToothSolid } from "react-icons/lia";
 const ClinicsPromises = () => {
   return (
     <div className="">
-      <h2 className="mt-28 mb-5 text-2xl tracking-wider text-center font-semibold md:text-3xl lg:text-4xl">
-        Why Choose Us?
+      <h2 className="mt-28 mb-6 text-3xl tracking-wider text-center font-semibold md:text-4xl lg:text-6xl">
+        WHY CHOOSE US?
       </h2>
       <div className="mx-4 md:grid md:grid-cols-2 md:mx-4 lg:grid-cols-5">
         <div className="relative lg:col-span-3">
@@ -21,7 +21,7 @@ const ClinicsPromises = () => {
           <h2 className="text-2xl text-center mb-2 font-medium tracking-widest md:text-left md:ml-16">
             <span className="text-4xl font-semibold">7</span> Reasons
           </h2>
-          <div className="w-full">
+          <div className="w-full ">
             <ul className="w-[300px] m-auto pl-4 md:pl-0 md:ml-20 lg:text-lg lg:w-[320px]">
               <li className="flex items-center py-1">
                 <LiaToothSolid />
