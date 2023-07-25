@@ -6,6 +6,7 @@ import Services from "./components/services";
 import Advantages from "./components/advantages";
 import PxReviews from "./components/pxreviews";
 import Footer from "./components/footer";
+import RealFooter from "./components/footer2";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Advantages />
       <PxReviews />
       <Footer />
+      <RealFooter />
     </div>
   );
 }
