@@ -3,7 +3,7 @@ import Loc from "./map";
 
 const ClinicLoc = () => {
   return (
-    <div className="bg-black w-full h-[620px] md:h-[550px] mt-60 ">
+    <div className="bg-black  h-[620px] md:h-[550px] mt-60 ">
       <div className="flex items-center justify-between">
         <h2 className="text-white text-2xl font-semibold px-4 pt-4">
           SEND US A MESSAGE AND GET IN TOUCH WITH US.
@@ -18,10 +18,10 @@ const ClinicLoc = () => {
       </div>
 
       <div className="grid md:grid-cols-3 px-5 py-2">
-        <div className="hidden md:block md:col-span-1 h-full w-full">
+        <div className="hidden md:block md:col-span-1  h-full w-full">
           <Loc />
         </div>
-        <div className="z-10 static md:col-span-2 justify-self-center bg-white h-full w-full px-10 py-7">
+        <div className="static md:z-10 md:col-span-2 justify-self-center bg-white h-full w-full px-10 py-7">
           <div>
             <h3>NAME</h3>
             <input className="border-b-4 w-full outline-none" type="text" />
