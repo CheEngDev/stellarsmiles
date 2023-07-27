@@ -16,7 +16,10 @@ const Hero = () => {
           Call or Text to Book <br /> 523-7569 or book online
         </p>
         <div className="text-center mt-4 mb-4 md:ml-7 md:text-left lg:mt-8 md:mt-5 ">
-          <a className="px-4 py-2 border-2 border-black cursor-pointer hover:border-[#cf945f] hover:text-[#cf945f] lg:px-7 lg:py-3 md:px-5 md:py-2">
+          <a
+            className="px-4 py-2 border-2 border-black cursor-pointer hover:border-[#cf945f] hover:text-[#cf945f] lg:px-7 lg:py-3 md:px-5 md:py-2"
+            href="/booknow"
+          >
             BOOK NOW
           </a>
         </div>

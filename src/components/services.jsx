@@ -50,7 +50,10 @@ const Services = () => {
             beautiful smiles.
           </p>
           <div className=" text-center mt-7 md:text-left md:mx-2 md:mt-8 lg:mt-14 lg:mx-4">
-            <a className="cursor-pointer border-2 border-black px-7 py-3 hover:border-[#cf945f] hover:text-[#cf945f] ">
+            <a
+              className="cursor-pointer border-2 border-black px-7 py-3 hover:border-[#cf945f] hover:text-[#cf945f] "
+              href="/services"
+            >
               VIEW ALL SERVICES
             </a>
           </div>
@@ -84,7 +87,10 @@ const Services = () => {
                 <div className="flex flex-col justify-center items-center h-full">
                   <h3 className="font-light text-lg">ORTHODONTICS</h3>
                   <div className="mt-2">
-                    <a className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold">
+                    <a
+                      className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold"
+                      href="/services"
+                    >
                       READ MORE
                     </a>
                   </div>
@@ -117,7 +123,10 @@ const Services = () => {
                 <div className="flex flex-col justify-center items-center h-full">
                   <h3 className="font-light text-lg">PERIODONTICS</h3>
                   <div className="mt-2">
-                    <a className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold">
+                    <a
+                      className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold"
+                      href="/services"
+                    >
                       READ MORE
                     </a>
                   </div>
@@ -150,7 +159,10 @@ const Services = () => {
                 <div className="flex flex-col justify-center items-center h-full">
                   <h3 className="font-light text-lg">ENDODONTICS</h3>
                   <div className="mt-2">
-                    <a className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold">
+                    <a
+                      className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold"
+                      href="/services"
+                    >
                       READ MORE
                     </a>
                   </div>
@@ -185,7 +197,10 @@ const Services = () => {
                 <div className="flex flex-col justify-center items-center h-full">
                   <h3 className="font-light text-lg">COSMETICS</h3>
                   <div className="mt-2">
-                    <a className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold">
+                    <a
+                      className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold"
+                      href="/services"
+                    >
                       READ MORE
                     </a>
                   </div>
@@ -221,7 +236,10 @@ const Services = () => {
                     GENERAL <br /> DENTISTRY
                   </h3>
                   <div className="mt-2">
-                    <a className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold">
+                    <a
+                      className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold"
+                      href="/services"
+                    >
                       READ MORE
                     </a>
                   </div>
@@ -256,7 +274,10 @@ const Services = () => {
                     ORAL <br /> SURGERY
                   </h3>
                   <div className="mt-2">
-                    <a className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold">
+                    <a
+                      className="border-[1px] rounded-lg px-2 py-1 border-black cursor-pointer hover:font-semibold"
+                      href="/services"
+                    >
                       READ MORE
                     </a>
                   </div>

@@ -5,6 +5,7 @@ import AboutUs from "./components/aboutus";
 import OurServices from "./components/servicespage";
 import Insurances from "./components/insurances";
 import ContactUs from "./components/contactus";
+import BookNow from "./components/booknow";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/services" element={<OurServices />} />
         <Route path="/insurances" element={<Insurances />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/booknow" element={<BookNow />} />
       </Routes>
     </div>
   );

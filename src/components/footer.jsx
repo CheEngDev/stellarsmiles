@@ -9,7 +9,10 @@ const Footer = () => {
             READY TO BOOK AN APPOINTMENT?
           </h2>
           <div className="text-white flex justify-center md:justify-normal text-xl mt-7 md:mx-3 md:mt-3 lg:mx-7 ">
-            <a className=" border-2 border-white px-6 py-3 hover:border-[#cf945f] hover:text-[#cf945f]">
+            <a
+              className=" border-2 border-white px-6 py-3 cursor-pointer hover:border-[#cf945f] hover:text-[#cf945f]"
+              href="/booknow"
+            >
               BOOK NOW
             </a>
           </div>
