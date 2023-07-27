@@ -68,19 +68,19 @@ const NavBar = () => {
       >
         <ul className=" text-white text-xl font-semibold static  z-10">
           <li className="mx-3 my-2 cursor-pointer hover:text-[#e6d2af] ">
-            HOME
+            <Link to="/"> HOME</Link>
           </li>
           <li className="mx-3 my-2 cursor-pointer hover:text-[#e6d2af]">
-            ABOUT US
+            <Link to="/about"> ABOUT US</Link>
           </li>
           <li className="mx-3 my-2 cursor-pointer hover:text-[#e6d2af]">
-            SERVICES
+            <Link to="/services"> SERVICES</Link>
           </li>
           <li className="mx-3 my-2 cursor-pointer hover:text-[#e6d2af]">
-            INSURANCES
+            <Link to="/insurances"> INSURANCES</Link>
           </li>
           <li className="mx-3 my-2 cursor-pointer hover:text-[#e6d2af]">
-            CONTACT US
+            <Link to="/contact"> CONTACT US</Link>
           </li>
         </ul>
       </div>

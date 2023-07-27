@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Loc from "./map";
 
 const ClinicLoc = () => {
+  const [message, setMessage] = useState({
+    name: "",
+    email: "",
+    number: "",
+    notes: "",
+  });
+
+  function handleMessageChange(e) {
+    let name = e.currentTarget.name;
+    let value = e.currentTarget.value;
+
+    setMessage((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
+  console.log(message);
   return (
     <div className="bg-black  h-[700px] md:h-[650px] mt-60 ">
       <div className="flex items-center justify-between">
@@ -24,22 +40,42 @@ const ClinicLoc = () => {
         <div className="static md:z-10 md:col-span-2 justify-self-center bg-white h-full w-full px-10 py-7">
           <div>
             <h3>NAME</h3>
-            <input className="border-b-4 w-full outline-none" type="text" />
+            <input
+              className="border-b-4 w-full outline-none"
+              type="text"
+              name="name"
+              value={message.name}
+              onChange={handleMessageChange}
+            />
           </div>
           <div className="mt-6">
             <h3>EMAIL</h3>
-            <input className="border-b-4 w-full outline-none" type="email" />
+            <input
+              className="border-b-4 w-full outline-none"
+              type="email"
+              name="email"
+              value={message.email}
+              onChange={handleMessageChange}
+            />
           </div>
           <div className="mt-6">
             <h3>NUMBER</h3>
-            <input className="border-b-4 w-full outline-none" type="number" />
+            <input
+              className="border-b-4 w-full outline-none"
+              type="number"
+              name="number"
+              value={message.number}
+              onChange={handleMessageChange}
+            />
           </div>
           <div className="mt-6">
             <h3>MESSAGE</h3>
             <textarea
               className="border-2 outline-none w-full h-[100px]"
-              name=""
-              id=""
+              name="notes"
+              id="notes"
+              value={message.notes}
+              onChange={handleMessageChange}
             ></textarea>
           </div>
           <button className="w-full mt-5 py-3 bg-black text-white text-xl">
