@@ -4,6 +4,7 @@ import {
   AiFillFacebook,
   AiOutlineInstagram,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const RealFooter = () => {
   return (
@@ -22,27 +23,27 @@ const RealFooter = () => {
             <h3 className="text-xl">Quick Links</h3>
             <ul className=" font-light">
               <li>
-                <a className="hover:hover:text-[#cf945f]" href="">
+                <a className="hover:hover:text-[#cf945f]" href="/">
                   Home
                 </a>
               </li>
               <li>
-                <a className="hover:hover:text-[#cf945f]" href="">
+                <a className="hover:hover:text-[#cf945f]" href="/about">
                   About Us
                 </a>
               </li>
               <li>
-                <a className="hover:hover:text-[#cf945f]" href="">
+                <a className="hover:hover:text-[#cf945f]" href="/services">
                   Services
                 </a>
               </li>
               <li>
-                <a className="hover:hover:text-[#cf945f]" href="">
+                <a className="hover:hover:text-[#cf945f]" href="/insurances">
                   Insurances
                 </a>
               </li>
               <li>
-                <a className="hover:hover:text-[#cf945f]" href="">
+                <a className="hover:hover:text-[#cf945f]" href="/contact">
                   Contact Us
                 </a>
               </li>

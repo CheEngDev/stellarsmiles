@@ -3,6 +3,7 @@ import stellar from "../assets/stellar.png";
 import { BiMenu } from "react-icons/bi";
 import { FaFacebookSquare } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [navopen, setnavopen] = useState(false);
@@ -19,14 +20,20 @@ const NavBar = () => {
           alt=""
         />
         <ul className=" text-white font-semibold hidden md:flex md:text-lg lg:text-xl">
-          <li className="mx-3 cursor-pointer hover:text-[#e6d2af] ">HOME</li>
-          <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">ABOUT US</li>
-          <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">SERVICES</li>
-          <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">
-            INSURANCES
+          <li className="mx-3 cursor-pointer hover:text-[#e6d2af] ">
+            <Link to="/"> HOME</Link>
           </li>
           <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">
-            CONTACT US
+            <Link to="/about">ABOUT US</Link>
+          </li>
+          <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">
+            <Link to="/services">SERVICES</Link>
+          </li>
+          <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">
+            <Link to="/insurances">INSURANCES</Link>
+          </li>
+          <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">
+            <Link to="/contact">CONTACT US</Link>
           </li>
         </ul>
         <div className="flex items-center">

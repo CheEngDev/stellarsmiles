@@ -3,7 +3,7 @@ import Loc from "./map";
 
 const ClinicLoc = () => {
   return (
-    <div className="bg-black  h-[620px] md:h-[550px] mt-60 ">
+    <div className="bg-black  h-[700px] md:h-[650px] mt-60 ">
       <div className="flex items-center justify-between">
         <h2 className="text-white text-2xl font-semibold px-4 pt-4">
           SEND US A MESSAGE AND GET IN TOUCH WITH US.
@@ -42,6 +42,9 @@ const ClinicLoc = () => {
               id=""
             ></textarea>
           </div>
+          <button className="w-full mt-5 py-3 bg-black text-white text-xl">
+            Send
+          </button>
         </div>
       </div>
     </div>
