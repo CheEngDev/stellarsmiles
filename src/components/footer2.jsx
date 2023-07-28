@@ -47,6 +47,11 @@ const RealFooter = () => {
                   Contact Us
                 </a>
               </li>
+              <li>
+                <a className="hover:hover:text-[#cf945f]" href="/login">
+                  Admin Log in
+                </a>
+              </li>
             </ul>
           </div>
           <div className="mt-3 md:mt-0">
