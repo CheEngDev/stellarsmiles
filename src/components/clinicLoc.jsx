@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Joi from "joi";
 import Loc from "./map";
+import messageService from "../services/messagesService";
 
 const ClinicLoc = () => {
   const [message, setMessage] = useState({
@@ -9,6 +11,8 @@ const ClinicLoc = () => {
     notes: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   function handleMessageChange(e) {
     let name = e.currentTarget.name;
     let value = e.currentTarget.value;
@@ -17,7 +21,44 @@ const ClinicLoc = () => {
       return { ...prev, [name]: value };
     });
   }
-  console.log(message);
+
+  async function addMessage() {
+    const errors = validate();
+    setErrors(errors || {});
+    setTimeout(() => {
+      setErrors({});
+    }, 3000);
+    if (errors) return;
+
+    const data = await messageService.addMessage(message);
+    console.log(data);
+    setMessage({ name: "", email: "", number: "", notes: "" });
+  }
+
+  // Validation for Message
+
+  const schema = Joi.object({
+    name: Joi.string().min(5).max(50).required(),
+    email: Joi.string()
+      .email({ tlds: { allow: false } })
+      .required(),
+    number: Joi.number().required(),
+    notes: Joi.string(),
+  });
+
+  function validate() {
+    const result = schema.validate(message, { abortEarly: false });
+    if (!result.error) return null;
+
+    const errors = {};
+
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message;
+    }
+
+    return errors;
+  }
+
   return (
     <div className="bg-black  h-[700px] md:h-[650px] mt-60 ">
       <div className="flex items-center justify-between">
@@ -39,7 +80,12 @@ const ClinicLoc = () => {
         </div>
         <div className="static md:z-10 md:col-span-2 justify-self-center bg-white h-full w-full px-10 py-7">
           <div>
-            <h3>NAME</h3>
+            <h3>
+              NAME{" "}
+              <span className={errors.name ? "text-red-600 text-xl" : "hidden"}>
+                *
+              </span>
+            </h3>
             <input
               className="border-b-4 w-full outline-none"
               type="text"
@@ -49,7 +95,14 @@ const ClinicLoc = () => {
             />
           </div>
           <div className="mt-6">
-            <h3>EMAIL</h3>
+            <h3>
+              EMAIL{" "}
+              <span
+                className={errors.email ? "text-red-600 text-xl" : "hidden"}
+              >
+                *
+              </span>
+            </h3>
             <input
               className="border-b-4 w-full outline-none"
               type="email"
@@ -59,7 +112,14 @@ const ClinicLoc = () => {
             />
           </div>
           <div className="mt-6">
-            <h3>NUMBER</h3>
+            <h3>
+              NUMBER{" "}
+              <span
+                className={errors.number ? "text-red-600 text-xl" : "hidden"}
+              >
+                *
+              </span>
+            </h3>
             <input
               className="border-b-4 w-full outline-none"
               type="number"
@@ -78,7 +138,10 @@ const ClinicLoc = () => {
               onChange={handleMessageChange}
             ></textarea>
           </div>
-          <button className="w-full mt-5 py-3 bg-black text-white text-xl">
+          <button
+            className="w-full mt-5 py-3 bg-black text-white text-xl"
+            onClick={addMessage}
+          >
             Send
           </button>
         </div>
