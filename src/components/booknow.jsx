@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import Joi from "joi";
+import { toast } from "react-toastify";
 import NavBar from "./navbar";
 import RealFooter from "./footer2";
+import bookingService from "../services/bookingsService";
 
 const BookNow = () => {
   const [appointment, setAppointment] = useState({
@@ -16,6 +19,8 @@ const BookNow = () => {
     notes: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   function handleBookAppointChange(e) {
     let name = e.currentTarget.name;
     let value = e.currentTarget.value;
@@ -24,8 +29,96 @@ const BookNow = () => {
       return { ...prev, [name]: value };
     });
   }
-  console.log(appointment);
 
+  async function addBooking() {
+    const errors = validate();
+    setErrors(errors || {});
+    setTimeout(() => {
+      setErrors({});
+    }, 3000);
+    if (errors) return;
+
+    toast("Thank You for Setting an appointment");
+    console.log(appointment);
+    const data = await bookingService.addBooking(appointment);
+
+    setAppointment({
+      category: "",
+      service: "",
+      date: "",
+      day: "",
+      from: "",
+      to: "",
+      fullName: "",
+      email: "",
+      number: "",
+      notes: "",
+    });
+  }
+
+  // Validation
+  const schema = Joi.object({
+    category: Joi.string().valid("Dentistry").required(),
+    service: Joi.string()
+      .valid(
+        "Orthodontics",
+        "Periodontics",
+        "Endodontics",
+        "Cosmetics",
+        "General Dentistry",
+        "Oral Surgery"
+      )
+      .required(),
+    date: Joi.date().required(),
+    day: Joi.string()
+      .valid("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+      .required(),
+    from: Joi.string()
+      .valid(
+        "8:00AM",
+        "9:00AM",
+        "10:00AM",
+        "11:00AM",
+        "1:00PM",
+        "2:00PM",
+        "3:00PM",
+        "4:00PM",
+        "5:00PM"
+      )
+      .required(),
+    to: Joi.string()
+      .valid(
+        "8:00AM",
+        "9:00AM",
+        "10:00AM",
+        "11:00AM",
+        "1:00PM",
+        "2:00PM",
+        "3:00PM",
+        "4:00PM",
+        "5:00PM"
+      )
+      .required(),
+    fullName: Joi.string().min(5).max(50).required(),
+    email: Joi.string()
+      .email({ tlds: { allow: false } })
+      .required(),
+    number: Joi.number().required(),
+    notes: Joi.string(),
+  });
+
+  function validate() {
+    const result = schema.validate(appointment, { abortEarly: false });
+    if (!result.error) return null;
+
+    const errors = {};
+
+    for (let item of result.error.details) {
+      errors[item.path[0]] = item.message;
+    }
+
+    return errors;
+  }
   return (
     <div>
       <NavBar />
@@ -37,7 +130,16 @@ const BookNow = () => {
           <div className="mt-9">
             <div className="flex">
               <div className="w-full mx-2">
-                <h3 className="text-lg font-semibold">Category</h3>
+                <h3 className="text-lg font-semibold">
+                  Category{" "}
+                  <span
+                    className={
+                      errors.category ? "text-red-600 text-xl" : "hidden"
+                    }
+                  >
+                    *
+                  </span>
+                </h3>
                 <select
                   className="w-full px-2 border-2 rounded-lg"
                   name="category"
@@ -50,7 +152,16 @@ const BookNow = () => {
                 </select>
               </div>
               <div className="w-full mx-2">
-                <h3 className="text-lg font-semibold">Service</h3>
+                <h3 className="text-lg font-semibold">
+                  Service
+                  <span
+                    className={
+                      errors.service ? "text-red-600 text-xl" : "hidden"
+                    }
+                  >
+                    *
+                  </span>
+                </h3>
                 <select
                   className="w-full px-2 border-2 rounded-lg"
                   name="service"
@@ -69,8 +180,15 @@ const BookNow = () => {
               </div>
             </div>
             <div className="mt-5 md:flex">
-              <div className="w-full mx-1 md:mx-2">
-                <h3 className="text-lg font-semibold"> On or After</h3>
+              <div className="w-full md:w-1/2 mx-1 md:mx-2">
+                <h3 className="text-lg font-semibold">
+                  On or After{" "}
+                  <span
+                    className={errors.date ? "text-red-600 text-xl" : "hidden"}
+                  >
+                    *
+                  </span>{" "}
+                </h3>
                 <input
                   className="border-2 rounded-lg w-full"
                   type="date"
@@ -79,9 +197,16 @@ const BookNow = () => {
                   onChange={handleBookAppointChange}
                 />
               </div>
-              <div className="flex mt-5 md:mt-0">
+              <div className="flex w-full mt-5 md:mt-0">
                 <div className="w-full mx-1 md:mx-2">
-                  <h3 className="text-lg font-semibold">Day</h3>
+                  <h3 className="text-lg font-semibold">
+                    Day{" "}
+                    <span
+                      className={errors.day ? "text-red-600 text-xl" : "hidden"}
+                    >
+                      *
+                    </span>{" "}
+                  </h3>
                   <select
                     className="w-full px-2 border-2 rounded-lg"
                     name="day"
@@ -99,7 +224,16 @@ const BookNow = () => {
                   </select>
                 </div>
                 <div className="w-full mx-1 md:mx-2">
-                  <h3 className="text-lg font-semibold">From</h3>
+                  <h3 className="text-lg font-semibold">
+                    From{" "}
+                    <span
+                      className={
+                        errors.from ? "text-red-600 text-xl" : "hidden"
+                      }
+                    >
+                      *
+                    </span>{" "}
+                  </h3>
                   <select
                     className="w-full px-2 border-2 rounded-lg"
                     name="from"
@@ -120,7 +254,14 @@ const BookNow = () => {
                   </select>
                 </div>
                 <div className="w-full mx-1 md:mx-2">
-                  <h3 className="text-lg font-semibold">To</h3>
+                  <h3 className="text-lg font-semibold">
+                    To{" "}
+                    <span
+                      className={errors.to ? "text-red-600 text-xl" : "hidden"}
+                    >
+                      *
+                    </span>{" "}
+                  </h3>
                   <select
                     className="w-full px-2 border-2 rounded-lg"
                     name="to"
@@ -144,7 +285,16 @@ const BookNow = () => {
             </div>
             <div className="mt-5 flex">
               <div className="w-full mx-2">
-                <h3 className="text-lg font-semibold">Full Name</h3>
+                <h3 className="text-lg font-semibold">
+                  Full Name{" "}
+                  <span
+                    className={
+                      errors.fullName ? "text-red-600 text-xl" : "hidden"
+                    }
+                  >
+                    *
+                  </span>{" "}
+                </h3>
                 <input
                   className="w-full border-2 rounded-lg px-2"
                   type="text"
@@ -155,7 +305,14 @@ const BookNow = () => {
                 />
               </div>
               <div className="w-full mx-2">
-                <h3 className="text-lg font-semibold">Email</h3>
+                <h3 className="text-lg font-semibold">
+                  Email{" "}
+                  <span
+                    className={errors.email ? "text-red-600 text-xl" : "hidden"}
+                  >
+                    *
+                  </span>{" "}
+                </h3>
                 <input
                   className="w-full border-2 rounded-lg px-2"
                   type="email"
@@ -166,7 +323,16 @@ const BookNow = () => {
                 />
               </div>
               <div className="w-full mx-2">
-                <h3 className="text-lg font-semibold">Number</h3>
+                <h3 className="text-lg font-semibold">
+                  Number{" "}
+                  <span
+                    className={
+                      errors.number ? "text-red-600 text-xl" : "hidden"
+                    }
+                  >
+                    *
+                  </span>{" "}
+                </h3>
                 <input
                   className="w-full border-2 rounded-lg px-2"
                   type="number"
@@ -179,7 +345,12 @@ const BookNow = () => {
             </div>
             <div className="mt-5 mx-2">
               <label htmlFor="" className="text-lg font-semibold">
-                Additional Details/Message
+                Additional Details/Message{" "}
+                <span
+                  className={errors.notes ? "text-red-600 text-xl" : "hidden"}
+                >
+                  *
+                </span>{" "}
               </label>
               <textarea
                 className="w-full h-[80px] border-2"
@@ -193,7 +364,10 @@ const BookNow = () => {
         </div>
 
         <div className="flex justify-center">
-          <button className="px-20 py-2 m-auto mt-5 text-lg font-semibold rounded-2xl bg-black text-white">
+          <button
+            className="px-20 py-2 m-auto mt-5 text-lg font-semibold rounded-2xl bg-black text-white"
+            onClick={addBooking}
+          >
             Submit{" "}
           </button>
         </div>

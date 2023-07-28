@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { toast } from "react-toastify";
 import Loc from "./map";
 import messageService from "../services/messagesService";
 
@@ -29,7 +30,7 @@ const ClinicLoc = () => {
       setErrors({});
     }, 3000);
     if (errors) return;
-
+    toast("Thank you for Sending us a message");
     const data = await messageService.addMessage(message);
     console.log(data);
     setMessage({ name: "", email: "", number: "", notes: "" });
