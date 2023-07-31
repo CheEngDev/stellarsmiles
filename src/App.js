@@ -9,6 +9,7 @@ import Insurances from "./components/insurances";
 import ContactUs from "./components/contactus";
 import BookNow from "./components/booknow";
 import Login from "./components/adminlogin";
+import Dashboard from "./components/dashboard";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/booknow" element={<BookNow />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   );

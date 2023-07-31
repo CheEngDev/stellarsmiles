@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { toast } from "react-toastify";
 import NavBar from "./navbar";
 import RealFooter from "./footer2";
+import authService from "../services/authService";
 
 const Login = () => {
   const [login, setLogin] = useState({
@@ -20,13 +22,22 @@ const Login = () => {
     });
   }
 
-  function handleLogin() {
+  async function handleLogin() {
     const errors = validate();
     setErrors(errors || {});
     setTimeout(() => {
       setErrors({});
     }, 3000);
     if (errors) return;
+
+    try {
+      await authService.login(login);
+      window.location = "/dashboard";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        toast.error(ex.response.data);
+      }
+    }
   }
 
   //   Validationg
