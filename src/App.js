@@ -10,6 +10,7 @@ import ContactUs from "./components/contactus";
 import BookNow from "./components/booknow";
 import Login from "./components/adminlogin";
 import Dashboard from "./components/dashboard";
+import ProtectedRoutes from "./components/protectedRoutes";
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/booknow" element={<BookNow />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
     </div>
   );

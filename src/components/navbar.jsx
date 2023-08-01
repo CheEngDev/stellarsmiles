@@ -4,9 +4,17 @@ import { BiMenu } from "react-icons/bi";
 import { FaFacebookSquare } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import authService from "../services/authService";
 
 const NavBar = () => {
   const [navopen, setnavopen] = useState(false);
+
+  const user = authService.getCurrentUser();
+
+  function logout() {
+    authService.logout();
+    window.location = "/";
+  }
 
   function handleOpenNav() {
     setnavopen(!navopen);
@@ -34,6 +42,14 @@ const NavBar = () => {
           </li>
           <li className="mx-3 cursor-pointer hover:text-[#e6d2af]">
             <Link to="/contact">CONTACT US</Link>
+          </li>
+          <li
+            className={
+              user ? "mx-3 cursor-pointer hover:text-[#e6d2af]" : "hidden"
+            }
+            onClick={logout}
+          >
+            LOG OUT
           </li>
         </ul>
         <div className="flex items-center">
@@ -81,6 +97,14 @@ const NavBar = () => {
           </li>
           <li className="mx-3 my-2 cursor-pointer hover:text-[#e6d2af]">
             <Link to="/contact"> CONTACT US</Link>
+          </li>
+          <li
+            className={
+              user ? "mx-3 my-2 cursor-pointer hover:text-[#e6d2af]" : "hidden"
+            }
+            onClick={logout}
+          >
+            LOG OUT
           </li>
         </ul>
       </div>

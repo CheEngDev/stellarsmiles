@@ -94,7 +94,7 @@ const Login = () => {
           </label>
           <input
             className="outline-none border-2 border-black px-2 rounded-lg mx-1"
-            type="text"
+            type="password"
             name="password"
             id="password"
             value={login.password}
