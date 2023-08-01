@@ -9,6 +9,7 @@ import oralsurg from "../assets/oralsurg.jpg";
 import RealFooter from "./footer2";
 
 const OurServices = () => {
+  console.log("hello");
   return (
     <div>
       <NavBar />
