@@ -33,6 +33,7 @@ const BookNow = () => {
   async function addBooking() {
     const errors = validate();
     setErrors(errors || {});
+    console.log(errors);
     setTimeout(() => {
       setErrors({});
     }, 3000);
@@ -170,7 +171,7 @@ const BookNow = () => {
                   onChange={handleBookAppointChange}
                 >
                   <option value=""></option>
-                  <option value="Orthodonctics">Orthodonctics</option>
+                  <option value="Orthodontics">Orthodonctics</option>
                   <option value="Periodontics">Periodontics</option>
                   <option value="Endodontics">Endodontics</option>
                   <option value="Cosmetics">Cosmetics</option>
