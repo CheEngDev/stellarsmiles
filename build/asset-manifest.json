@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4ba754eb.css",
+    "main.js": "/static/js/main.a4914b63.js",
+    "static/media/About.jpg": "/static/media/About.8ecd978da0ad883e93ae.jpg",
+    "static/media/dental.mp4": "/static/media/dental.d73bbdcf595e4a236930.mp4",
+    "static/media/Ortho.jpg": "/static/media/Ortho.b7b6c2291285e4970ad9.jpg",
+    "static/media/Clinic.jpg": "/static/media/Clinic.0ac16fb48101c7452be5.jpg",
+    "static/media/gendent.jpg": "/static/media/gendent.fef5191d345636a0cefe.jpg",
+    "static/media/smile.jpg": "/static/media/smile.9c15913b265f088f6778.jpg",
+    "static/media/oralsurg.jpg": "/static/media/oralsurg.c4d59694301eb888907d.jpg",
+    "static/media/perio.jpg": "/static/media/perio.195f64811a7e59b5194e.jpg",
+    "static/media/insurance.jpg": "/static/media/insurance.e0b98eaed23c2b6afa00.jpg",
+    "static/media/cosme.jpg": "/static/media/cosme.fcb56eb5bdbb35cd50e2.jpg",
+    "static/media/endo.jpg": "/static/media/endo.50b43b482814ae274dae.jpg",
+    "static/media/smiles.jpeg": "/static/media/smiles.5f9b6364ac5b7ecd6da7.jpeg",
+    "static/media/stellar.png": "/static/media/stellar.cfb6ae32e7dbbacb820b.png",
+    "static/media/HeadDent.png": "/static/media/HeadDent.2bd6edef37e779e29aa3.png",
+    "static/media/Assoc.png": "/static/media/Assoc.f48fc57aab6ad9d1c0e7.png",
+    "index.html": "/index.html",
+    "main.4ba754eb.css.map": "/static/css/main.4ba754eb.css.map",
+    "main.a4914b63.js.map": "/static/js/main.a4914b63.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4ba754eb.css",
+    "static/js/main.a4914b63.js"
+  ]
+}
