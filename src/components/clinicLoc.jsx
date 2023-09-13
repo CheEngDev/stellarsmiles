@@ -28,7 +28,7 @@ const ClinicLoc = () => {
     setErrors(errors || {});
     setTimeout(() => {
       setErrors({});
-    }, 3000);
+    }, 2000);
     if (errors) return;
     toast("Thank you for Sending us a message");
     const data = await messageService.addMessage(message);

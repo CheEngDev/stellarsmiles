@@ -23,7 +23,7 @@ const NavBar = () => {
     <div>
       <div className="bg-black w-full flex justify-between items-center px-2 h-[50px] lg:h-[70px] md:h-[50px]">
         <img
-          className="w-[155px] -translate-y-2 lg:w-[210px]  md:w-[170px]"
+          className="w-[155px] -translate-y-2 lg:w-[210px]  md:w-[170px] "
           src={stellar}
           alt=""
         />

@@ -58,7 +58,6 @@ const Services = () => {
             </a>
           </div>
         </div>
-
         <div className=" md:col-span-2 lg:col-span-1 md:justify-self-center lg:justify-self-auto">
           <div className="flex flex-col bg-[#f3f2ef] md:flex-row ">
             <div

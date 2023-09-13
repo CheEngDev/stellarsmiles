@@ -17,7 +17,7 @@ const PxReviews = () => {
 
   useEffect(() => {
     setInterval(handleShowReview, 20000);
-  });
+  }, [move]);
 
   return (
     <div className="mt-40 px-2">

@@ -47,7 +47,6 @@ const Dashboard = () => {
   for (const book of bookings) {
     book.date = moment(book.date).format("YYYY-MM-DD");
   }
-  console.log(bookings);
 
   // Filtering
   function handleFilterParameter(e) {
@@ -210,7 +209,9 @@ const Dashboard = () => {
   }
 
   function nextPageMessage() {
-    if (currentPageMessage === Math.ceil(messages.length / 7 - 1)) {
+    if (allMessages[filterBy].length === 0) {
+      setPageMessage(0);
+    } else if (currentPageMessage === Math.ceil(messages.length / 7 - 1)) {
       setPageMessage(0);
     } else {
       setPageMessage(currentPageMessage + 1);
@@ -259,7 +260,7 @@ const Dashboard = () => {
       booking2[index].date = moment(booking2[index].date).format("YYYY-MM-DD");
 
       const result = await bookingsService.editBooking(booking2[index]);
-      setBooking(booking2);
+
       console.log(result);
     } catch (ex) {
       console.log(ex);
@@ -286,6 +287,9 @@ const Dashboard = () => {
   }
 
   function nextPageBooking() {
+    if (allBookings[filterBy].length === 0) {
+      setPageAppoint(0);
+    }
     if (currentPageAppoint === Math.ceil(bookings.length / 7 - 1)) {
       setPageAppoint(0);
     } else {
@@ -352,7 +356,7 @@ const Dashboard = () => {
         <div
           className={
             appointormessage === "Message"
-              ? "overflow-x-scroll h-[310px] mt-5 px-12"
+              ? "overflow-x-scroll h-[310px] mt-5 px-6"
               : "hidden"
           }
         >
@@ -396,7 +400,7 @@ const Dashboard = () => {
         </div>
         <div className={appointormessage === "Message" ? "px-5" : "hidden"}>
           <Pagination
-            itemsCount={messages.length}
+            itemsCount={allMessages[filterBy].length}
             pageS={pageSize}
             currentPage={currentPageMessage}
             prevbt={prevPageMessage}
@@ -408,7 +412,7 @@ const Dashboard = () => {
         <div
           className={
             appointormessage === "Appoint"
-              ? "overflow-x-scroll  h-[320px] mt-5 px-10"
+              ? "overflow-x-scroll  h-[320px] mt-5 px-6"
               : "hidden"
           }
         >
@@ -426,7 +430,7 @@ const Dashboard = () => {
                 <th className="px-2">Name</th>
                 <th className="px-2">Number</th>
                 <th className="px-2">Email</th>
-                <th className="px-2 max-w-[200px] min-w[200px] w-full">Note</th>
+                <th className="px-2">Note</th>
                 <th className="px-2">Booked/Not</th>
                 <th></th>
               </tr>
@@ -439,7 +443,7 @@ const Dashboard = () => {
                     {" "}
                     {moment(book.date).format("MMM/DD/YYYY")}
                   </td>
-                  <td className="px-2">
+                  <td className="px-2 min-w-[90px] ">
                     {book.day}
                     <br />
                     {book.from} - {book.to}
@@ -448,9 +452,7 @@ const Dashboard = () => {
                   <td className=" px-2">{book.fullName}</td>
                   <td className=" px-2">{book.number}</td>
                   <td className=" px-2">{book.email}</td>
-                  <td className=" px-2 max-w-[200px] min-w-[250px] w-full">
-                    {book.notes}
-                  </td>
+                  <td className=" px-2  min-w-[250px] ">{book.notes}</td>
                   <td className="px-2">
                     <Switch
                       style={{
@@ -475,7 +477,7 @@ const Dashboard = () => {
         </div>
         <div className={appointormessage === "Appoint" ? "px-5" : "hidden"}>
           <Pagination
-            itemsCount={bookings.length}
+            itemsCount={allBookings[filterBy].length}
             pageS={pageSize}
             currentPage={currentPageAppoint}
             prevbt={prevPageBooking}

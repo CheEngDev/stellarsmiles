@@ -3,7 +3,7 @@ import ad from "../assets/dental.mp4";
 
 const Hero = () => {
   return (
-    <div className="mt-2 md:grid md:grid-cols-4 md:auto-cols-auto md:gap-2 ">
+    <div className="mt-2 md:grid md:grid-cols-4  md:gap-2 ">
       <div className="">
         <h1 className=" text-4xl text-center font-medium tracking-wider mt-4 ml-2 md:text-left md:text-4xl lg:text-6xl">
           STELLAR SMILES

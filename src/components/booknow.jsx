@@ -345,7 +345,7 @@ const BookNow = () => {
               </div>
             </div>
             <div className="mt-5 mx-2">
-              <label htmlFor="" className="text-lg font-semibold">
+              <label htmlFor="notes" className="text-lg font-semibold">
                 Additional Details/Message{" "}
                 <span
                   className={errors.notes ? "text-red-600 text-xl" : "hidden"}
